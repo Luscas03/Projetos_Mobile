@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">OlaMundoTabs</string>
+    <string name="title_activity_main">OlaMundoTabs</string>
+    <string name="package_name">net.lucas.olamundotabs</string>
+    <string name="custom_url_scheme">net.lucas.olamundotabs</string>
+</resources>
