@@ -23,11 +23,20 @@ const routes: Routes = [
     path: 'sobre',
     loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
   },
+  {
+    path: 'contato',
+    loadChildren: () => import('./pages/contact/contact.module').then( m => m.ContactPageModule)
+  },
+  {
+    path: 'forum',
+    loadChildren: () => import('./pages/forum/forum.module').then( m => m.ForumPageModule)
+  },
   //error para rotas inexistentes OBS: TEM QUE SER SEMPRE A ULTIMA.
   {
     path: '**',
     loadChildren: () => import('./pages/e404/e404.module').then( m => m.E404PageModule)
   }
+  
  
 ];
 

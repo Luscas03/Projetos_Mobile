@@ -21,6 +21,16 @@ export class AppComponent implements OnInit {
       title: 'Sobre',
       url: '/sobre',
       icon: 'information-circle'
+    },
+    {
+      title: 'Contato',
+      url: '/contato',
+      icon: 'call'
+    },
+    {
+      title: 'Fórum',
+      url: '/forum',
+      icon: 'chatbubbles'
     }
     
   ];
