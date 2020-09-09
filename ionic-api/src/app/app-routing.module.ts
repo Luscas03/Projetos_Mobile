@@ -2,15 +2,33 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  //rota da página inicial da aplicação
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: 'inicio',
     pathMatch: 'full'
   },
+ 
+ //Rota da página home
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+    path: 'inicio',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },
+  //error 404
+  {
+    path: 'e404',
+    loadChildren: () => import('./pages/e404/e404.module').then( m => m.E404PageModule)
+  },
+  {
+    path: 'sobre',
+    loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
+  },
+  //error para rotas inexistentes OBS: TEM QUE SER SEMPRE A ULTIMA.
+  {
+    path: '**',
+    loadChildren: () => import('./pages/e404/e404.module').then( m => m.E404PageModule)
   }
+ 
 ];
 
 @NgModule({
