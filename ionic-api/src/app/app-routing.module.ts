@@ -35,6 +35,10 @@ const routes: Routes = [
   {
     path: '**',
     loadChildren: () => import('./pages/e404/e404.module').then( m => m.E404PageModule)
+  },
+  {
+    path: 'list',
+    loadChildren: () => import('./users/list/list.module').then( m => m.ListPageModule)
   }
   
  
