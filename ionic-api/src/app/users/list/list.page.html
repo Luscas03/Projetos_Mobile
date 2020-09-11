@@ -1,9 +1,35 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>list</ion-title>
+   <ion-buttons slot="start">
+     <ion-menu-button></ion-menu-button>
+   </ion-buttons>
+    <ion-title class="ion-text-center">Usuários</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+ <div class="ion-text-center ion-margin ion-padding" *ngIf = "!data">
+  <ion-spinner name="crescent"></ion-spinner>
+</div>
+<!-- Se existem usuarios para mostrar -->
+<ion-list *ngFor="let user of data">
+<ion-item routerDirection="root" [routerLink] = "['/usuario/', user.id]">
+  <ion-avatar slot="start">
+    <img src="{{user.avatar}}" alt="{{user.name}}">
+  </ion-avatar>
+  <ion-label>
+    <h2>{{user.name}}</h2>
+    <h3>{{user.email}}</h3>
+  </ion-label>
+</ion-item>
 
+
+
+</ion-list>
+<!--Se não existem users para exibir-->
+<ion-list *ngIf="noUsers">
+  <ion-item color="danger">
+    <ion-label class="ion-text-center">Nenhum Usuário Encontrado!</ion-label>
+  </ion-item>
+</ion-list>
 </ion-content>

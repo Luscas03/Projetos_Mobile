@@ -31,7 +31,12 @@ export class AppComponent implements OnInit {
       title: 'Fórum',
       url: '/forum',
       icon: 'chatbubbles'
-    }
+    },
+    {
+      title: 'Listar Usuários',
+      url: '/usuarios',
+      icon: 'people'
+    },
     
   ];
 

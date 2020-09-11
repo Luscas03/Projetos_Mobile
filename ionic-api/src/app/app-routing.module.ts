@@ -31,15 +31,17 @@ const routes: Routes = [
     path: 'forum',
     loadChildren: () => import('./pages/forum/forum.module').then( m => m.ForumPageModule)
   },
+  
+  {
+    path: 'usuarios',
+    loadChildren: () => import('./users/list/list.module').then( m => m.ListPageModule)
+  },
   //error para rotas inexistentes OBS: TEM QUE SER SEMPRE A ULTIMA.
   {
     path: '**',
     loadChildren: () => import('./pages/e404/e404.module').then( m => m.E404PageModule)
-  },
-  {
-    path: 'list',
-    loadChildren: () => import('./users/list/list.module').then( m => m.ListPageModule)
   }
+  
   
  
 ];
