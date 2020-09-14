@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Usuário</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Se usuário não existe -->
+  <ion-list *ngIf="noUser">
+    <ion-item color="danger">
+      <ion-label class="ion-text-center">Usuário não foi encontrado!</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Spinner enquanto carrega os dados da API -->
+  <div class="ion-text-center ion-margin ion-padding" *ngIf="!data && !noUser">
+    <ion-spinner name="lines"></ion-spinner>
+  </div>
+
+  <!-- Usuário encontrado -->
+  <div *ngIf="data">
+
+    <ion-card>
+
+      <!-- Foto -->
+      <ion-img [src]="data.avatar" [alt]="data.name"></ion-img>
+
+      <!-- Nome e e-mail -->
+      <ion-card-header>
+        <ion-card-title>{{data.name}}</ion-card-title>
+        <ion-card-subtitle>{{data.email}}</ion-card-subtitle>
+      </ion-card-header>
+
+      <!-- Outros dados -->
+      <ion-card-content>
+        <p>Cadastrado em {{data.date | date: 'dd/MM/yyyy, HH:mm'}}.</p>
+        <p>
+          Status:
+          <ion-note *ngIf="data.status == 1" color="secondary">Ativo</ion-note>
+          <ion-note *ngIf="data.status != 1" color="danger">Inativo</ion-note>
+        </p>
+        <p>Senha: {{data.passwd}}</p>
+      </ion-card-content>
+
+      <!-- Ferramentas para o usuário-->
+      <ion-grid>
+        <ion-row>
+
+          <!-- Botão para editar usuário -->
+          <ion-col>
+            <ion-button color="success" [routerLink]="['/editar/' + data.id]">
+              <ion-icon name="create"></ion-icon>
+            </ion-button>
+          </ion-col>
+
+          <!-- Botão para apagar usuário -->
+          <ion-col class="ion-text-end">
+            <ion-button color="warning" [routerLink]="['/apagar/' + data.id]">
+              <ion-icon name="trash"></ion-icon>
+            </ion-button>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+
+    </ion-card>
+
+  </div>
+
+  <!-- Volta para a lista de usuários -->
+  <ion-button expand="block" class="ion-margin" routerLink="/usuarios">
+    Listar usuários
+  </ion-button>
+
+</ion-content>
