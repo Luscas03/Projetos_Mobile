@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Listar Usuários',
-      url: '/usuarios',
+      url: '/usuarios/todos',
       icon: 'people'
     },
     

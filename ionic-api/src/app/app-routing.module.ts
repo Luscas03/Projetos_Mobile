@@ -29,7 +29,7 @@ const routes: Routes = [
 
   // Rota para listar todos os usuários
   {
-    path: 'usuarios',
+    path: 'usuarios/:nc',
     loadChildren: () => import('./users/list/list.module').then( m => m.ListPageModule)
   },
 

@@ -59,7 +59,7 @@
 
           <!-- Botão para apagar usuário -->
           <ion-col class="ion-text-end">
-            <ion-button color="warning" [routerLink]="['/apagar/' + data.id]">
+            <ion-button color="warning" (click)="delUser(data.id, data.name)">
               <ion-icon name="trash"></ion-icon>
             </ion-button>
           </ion-col>
@@ -72,7 +72,7 @@
   </div>
 
   <!-- Volta para a lista de usuários -->
-  <ion-button expand="block" class="ion-margin" routerLink="/usuarios">
+  <ion-button expand="block" class="ion-margin" routerLink="/usuarios/todos">
     Listar usuários
   </ion-button>
 
