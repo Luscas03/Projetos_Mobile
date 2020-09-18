@@ -17,11 +17,7 @@ export class AppComponent implements OnInit {
       url: '/inicio',
       icon: 'home'
     },
-    {
-      title: 'Sobre',
-      url: '/sobre',
-      icon: 'information-circle'
-    },
+    
     {
       title: 'Contato',
       url: '/contato',
@@ -36,6 +32,16 @@ export class AppComponent implements OnInit {
       title: 'Listar Usuários',
       url: '/usuarios/todos',
       icon: 'people'
+    },
+    {
+      title: 'Cadastrar Usuário',
+      url: '/novo',
+      icon: 'person-add'
+    },
+    {
+      title: 'Sobre',
+      url: '/sobre',
+      icon: 'information-circle'
     },
     
   ];

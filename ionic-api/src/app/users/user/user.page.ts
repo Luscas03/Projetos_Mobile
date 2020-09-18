@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 
 // Importa biblioteca de navegação
 import { NavController } from '@ionic/angular';
-import { LOADIPHLPAPI } from 'dns';
+
 
 @Component({
   selector: 'app-user',
