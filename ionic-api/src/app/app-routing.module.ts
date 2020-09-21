@@ -42,12 +42,17 @@ const routes: Routes = [
     path: 'novo',
     loadChildren: () => import('./users/create/create.module').then( m => m.CreatePageModule)
   },
+  {
+    path: 'editar/:id',
+    loadChildren: () => import('./pages/edit/edit.module').then( m => m.EditPageModule)
+  },
 
   // Rota para rotas inexistentes - DEVE SER SEMPRE A ÚLTIMA ROTA
   {
     path: '**',
     loadChildren: () => import('./pages/e404/e404.module').then( m => m.E404PageModule)
   },
+  
   
 
 ];

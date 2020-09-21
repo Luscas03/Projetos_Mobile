@@ -1,46 +1,48 @@
 <div>
-  <p class="ion-margin">
-  * Preencha os campos abaixo para cadastrar um novo usuário.
+  <p class="ion-margin" *ngIf="!userForm.controls.id.value">
+    Preencha os campos abaixo com atenção para cadastrar um novo usuário.
+  </p>
+
+  <p class="ion-margin" *ngIf="userForm.controls.id.value">
+    Preencha os campos abaixo com atenção para editar o usuário.
   </p>
 
   <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
     <input type="hidden" id="id" name="id" formControlName="id" />
+
     <ion-list lines="full" class="ion-margin">
 
-     <!-- Campo 'name' -->
-     <ion-item>
-      <ion-label for="name" position="floating" color="primary">Nome:
-        
-        <!-- Se esta em estado de erro -->
-        <ion-text color="danger" *ngIf="userForm.controls.name.errors">
-          
-          <!-- Se ainda não preencheu -->
-          <small *ngIf="userForm.controls.name.errors.required">* Obrigatório</small>
+      <!-- Campo 'name' -->
+      <ion-item>
+        <ion-label for="name" position="floating" color="primary">Nome:
 
-          <!-- Se está muito curto -->
-          <small *ngIf="userForm.controls.name.errors.minlength">* Inválido</small>
+          <!-- Se esta em estado de erro -->
+          <ion-text color="danger" *ngIf="userForm.controls.name.errors">
 
-        </ion-text>
-      </ion-label>
-      <ion-input type="text" id="name" name="name" formControlName="name"></ion-input>
-    </ion-item>
+            <!-- Se ainda não preencheu -->
+            <small *ngIf="userForm.controls.name.errors.required">* Obrigatório</small>
 
-     <!-- Campo 'email' -->
-     <ion-item>
-      <ion-label for="email" position="floating" color="primary">E-mail:
-        <ion-text color="danger" *ngIf="userForm.controls.email.errors">
-          <small *ngIf="userForm.controls.email.errors.required">* Obrigatório</small>
-          <small *ngIf="userForm.controls.email.errors.email">* Inválido</small>
-        </ion-text>
-      </ion-label>
-      <ion-input type="email" id="email" name="email" formControlName="email"></ion-input>
-    </ion-item>
+            <!-- Se está muito curto -->
+            <small *ngIf="userForm.controls.name.errors.minlength">* Inválido</small>
 
+          </ion-text>
+        </ion-label>
+        <ion-input type="text" id="name" name="name" formControlName="name"></ion-input>
+      </ion-item>
 
+      <!-- Campo 'email' -->
+      <ion-item>
+        <ion-label for="email" position="floating" color="primary">E-mail:
+          <ion-text color="danger" *ngIf="userForm.controls.email.errors">
+            <small *ngIf="userForm.controls.email.errors.required">* Obrigatório</small>
+            <small *ngIf="userForm.controls.email.errors.email">* Inválido</small>
+          </ion-text>
+        </ion-label>
+        <ion-input type="email" id="email" name="email" formControlName="email"></ion-input>
+      </ion-item>
 
       <!-- Campo 'avatar' -->
-       <!-- Campo 'avatar' -->
-       <ion-item>
+      <ion-item>
         <ion-label for="avatar" position="floating" color="primary">URL do avatar:
           <ion-text color="danger" *ngIf="userForm.controls.avatar.errors">
             <small *ngIf="userForm.controls.avatar.errors.required">* Obrigatório</small>
@@ -60,19 +62,18 @@
         </ion-label>
         <ion-input type="password" id="passwd" name="passwd" formControlName="passwd"></ion-input>
       </ion-item>
-	  
-	      <!-- Campo Status -->
-    <ion-item>
-      <ion-label for="status" color="primary">Status:</ion-label>
-      <ion-toggle id="status" name="status" slot="end" color="primary" formControlName="status" checked (ionChange)="statusChange()"></ion-toggle>
-    </ion-item>
 
-
+      <!-- Campo Status -->
+      <ion-item>
+        <ion-label for="status" color="primary">Status:</ion-label>
+        <ion-toggle id="status" name="status" slot="end" color="primary" formControlName="status" checked (ionChange)="statusChange()"></ion-toggle>
+      </ion-item>
 
     </ion-list>
 
     <ion-button type="submit" expand="block" class="ion-margin" [disabled]="userForm.invalid">
-      Cadastrar usuário
+      <span *ngIf="!userForm.controls.id.value">Cadastrar novo usuário</span>
+      <span *ngIf="userForm.controls.id.value">Salvar usuário</span>
     </ion-button>
 
   </form>
