@@ -86,18 +86,61 @@ export class UserFormComponent implements OnInit {
 
 //método de envio de formulário 
 onSubmit() {
-  console.log(this.userForm.value)
+//Retificar a condição do botão de status
+
+this.statusChange();
+
+//Se o form está com erros , sai sem fazer nada
+if (this.userForm.invalid) {
+  return false;
+}
+//apagr o campo id
+
+delete this.userForm.value.id;
+
+//salvar os dados do form na API
+  this.usersService.postUser(this.userForm.value).subscribe((res : any) =>{
+
+    //Se conseguiu
+if(res.status === 'success') {
+//Feedback
+if (confirm(`"${this.userForm.value.name}" foi adicionado com sucesso!\n
+• Clique em [OK] para listar os usuários;
+• Clique em [Cancelar] para cadastrar o usuário.
+`)) {
+  // Limpar o form
+  this.userForm.reset();
+  this.userForm.controls.status.setValue(1);
+
+  // Retornar para a listagem
+  this.NavCtrl.navigateForward('/usuarios/todos');
+} else {
+
+  // Limpar o form
+  this.userForm.reset();
+  this.userForm.controls.status.setValue(1);
+}
+
+} else {
+
+// Exibe erro no console
+console.error('Falha:', res.result);
+}
+});
 }
 //Controlar o ion-toggle 'status' (soluição do 'bug do toggle')
 statusChange(){
-  if (this.userForm.value.status === false ) {
-    this.userForm.value.status = 0;
-  }
+ 
   if (this.userForm.value.status === true ) {
     this.userForm.value.status = 1 ;
   }
-  if (this.userForm.value.status === null ) {
+  
+  if (this.userForm.value.status === false ) {
     this.userForm.value.status = 0 ;
-  }
+}
+ 
+if (this.userForm.value.status === null ) {
+  this.userForm.value.status = 0 ;
+}
 }
 }

@@ -36,4 +36,11 @@ export class UsersService {
     //Apaga os dados da api
     return this.http.delete(`${this.apiUrl}?id=${id}`);
   }
+
+  //Cadastrar Uuário
+  postUser(data: any): Observable<any> {
+//salvando o usuário
+    return this.http.post(this.apiUrl, data);
+  }
+
 }
